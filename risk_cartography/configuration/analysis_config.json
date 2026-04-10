@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Risk Cartography Analysis Configuration",
+  "description": "Configuration for loading and analyzing risk cartography Excel files",
+  "version": "1.0.0",
+  "generated_at": "2026-04-10T12:00:00Z",
+  
+  "input": {
+    "description": "Input configuration for Excel files",
+    "base_directory": "../",
+    "file_pattern": "carto_des_risques_*.xlsx",
+    "files": [
+      {
+        "filename": "carto_des_risques_Entity_ABC1.xlsx",
+        "entity_name": "Entity_ABC1",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC2.xlsx",
+        "entity_name": "Entity_ABC2",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC3.xlsx",
+        "entity_name": "Entity_ABC3",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC4.xlsx",
+        "entity_name": "Entity_ABC4",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC5.xlsx",
+        "entity_name": "Entity_ABC5",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC6.xlsx",
+        "entity_name": "Entity_ABC6",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC7.xlsx",
+        "entity_name": "Entity_ABC7",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      },
+      {
+        "filename": "carto_des_risques_Entity_ABC8.xlsx",
+        "entity_name": "Entity_ABC8",
+        "enabled": true,
+        "sheet_name": "All",
+        "skip_rows": 3
+      }
+    ]
+  },
+  
+  "columns": {
+    "description": "Column index to field name mapping (0-indexed)",
+    "mapping": {
+      "0": "risk_id",
+      "1": "scenario",
+      "2": "description",
+      "3": "aggravating_factors",
+      "4": "prob_gross",
+      "5": "impact_gross",
+      "6": "score_gross",
+      "7": "level_gross",
+      "8": "prevention_measures",
+      "9": "prob_residual",
+      "10": "impact_residual",
+      "11": "score_residual",
+      "12": "level_residual",
+      "13": "corrective_actions"
+    },
+    "numeric_fields": [
+      "prob_gross",
+      "impact_gross", 
+      "score_gross",
+      "prob_residual",
+      "impact_residual",
+      "score_residual"
+    ],
+    "skip_header_values": ["N°", "N"]
+  },
+  
+  "risk_levels": {
+    "description": "Risk level definitions with thresholds and colors",
+    "levels": [
+      {
+        "key": "🟢 Faible",
+        "label_en": "Low",
+        "label_fr": "Faible",
+        "color": "#28a745",
+        "order": 1,
+        "score_min": 1,
+        "score_max": 2
+      },
+      {
+        "key": "🟡 Modéré",
+        "label_en": "Moderate",
+        "label_fr": "Modéré",
+        "color": "#ffc107",
+        "order": 2,
+        "score_min": 3,
+        "score_max": 6
+      },
+      {
+        "key": "🟠 Élevé",
+        "label_en": "High",
+        "label_fr": "Élevé",
+        "color": "#fd7e14",
+        "order": 3,
+        "score_min": 7,
+        "score_max": 9
+      },
+      {
+        "key": "🔴 Critique",
+        "label_en": "Critical",
+        "label_fr": "Critique",
+        "color": "#dc3545",
+        "order": 4,
+        "score_min": 10,
+        "score_max": 16
+      }
+    ]
+  },
+  
+  "risk_categories": {
+    "description": "Risk categories identified by prefix letter in risk_id",
+    "categories": [
+      {
+        "prefix": "A",
+        "name_en": "Procurement",
+        "name_fr": "Achats",
+        "color": "#3498db",
+        "icon": "🛒"
+      },
+      {
+        "prefix": "C",
+        "name_en": "Commercial/Sales",
+        "name_fr": "Commercial",
+        "color": "#9b59b6",
+        "icon": "💼"
+      },
+      {
+        "prefix": "R",
+        "name_en": "Human Resources",
+        "name_fr": "Ressources Humaines",
+        "color": "#e74c3c",
+        "icon": "👥"
+      },
+      {
+        "prefix": "F",
+        "name_en": "Finance",
+        "name_fr": "Finance",
+        "color": "#2ecc71",
+        "icon": "💰"
+      },
+      {
+        "prefix": "M",
+        "name_en": "M&A / Joint Ventures",
+        "name_fr": "M&A / JV",
+        "color": "#f39c12",
+        "icon": "🤝"
+      },
+      {
+        "prefix": "S",
+        "name_en": "Sponsoring",
+        "name_fr": "Sponsoring",
+        "color": "#1abc9c",
+        "icon": "🎯"
+      },
+      {
+        "prefix": "P",
+        "name_en": "Public Officials",
+        "name_fr": "Agents Publics",
+        "color": "#34495e",
+        "icon": "🏛️"
+      }
+    ]
+  },
+  
+  "analysis": {
+    "description": "Analysis parameters",
+    "top_risks_count": 10,
+    "probability_range": [1, 4],
+    "impact_range": [1, 4]
+  },
+  
+  "output": {
+    "description": "Output file configuration",
+    "directory": "../output/",
+    "dashboard_filename": "risk_dashboard.html",
+    "exports": {
+      "risk_data_csv": "powerbi_risk_data.csv",
+      "entity_summary_csv": "powerbi_entity_summary.csv",
+      "category_summary_csv": "powerbi_category_summary.csv",
+      "risk_matrix_csv": "powerbi_risk_matrix.csv",
+      "analysis_json": "powerbi_analysis.json"
+    }
+  },
+  
+  "dashboard": {
+    "description": "Dashboard visualization settings",
+    "title": "Risk Cartography Dashboard",
+    "colors": {
+      "background_primary": "#1a1d29",
+      "background_secondary": "#252836",
+      "background_card": "#2d3142",
+      "text_primary": "#ffffff",
+      "text_secondary": "#a0a3b1",
+      "accent": "#00d4ff",
+      "border": "#3d4157"
+    }
+  }
+}
